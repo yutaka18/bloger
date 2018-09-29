@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ブログ</title>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+
+		<style type="text/css" href="./style.css"></style>
+						<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+					  <!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      WebFontConfig = {
+        google: { families: [ 'Unica+One::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
+
+	</head>
+	
+    <body>
+	  <nav class="#00b0ff light-blue accent-3">
+		<div class="nav-wrapper">
+		  <a href="/blogs" class="brand-logo">トップページ</a>
+			<% if user_signed_in? %>
+		        <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        	 <span><%= current_user.nickname %>
+                		<li><a href="/users/<%= current_user.id %>">マイページ</a></li>
+		                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+		          <li><a class="post" href="/blogs/new">投稿する</a></li>
+            	     </span>
+		        </ul>
+		    <% else %>
+				  <ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+					<li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+				  </ul>
+			<% end %>
+		</div>
+	  </nav>
+<div class='box'>
+  <div class='wave -one'></div>
+  <div class='wave -two'></div>
+  <div class='wave -three'></div>
+  <div class='title'>投稿ブログ</div>
+</div>
+
+		<%= yield %>
+
+	  <footer>
+	    <p>
+	      Copyright blog 2018.
+	    </p>
+	  </footer>
+	</body>
+</html>

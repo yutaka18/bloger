@@ -1,0 +1,9 @@
+<script type="text/javascript" src="./app.js"></script>
+
+  <div class="contents row" >
+    <% @blogs.each do |blog| %>
+    <%= render partial: "blog", locals: { blog: blog } %>
+    <% end %>
+    <%= paginate(@blogs) %>
+  </div>
+

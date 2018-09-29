@@ -1,0 +1,12 @@
+  <div class="contents row">
+      <h3>
+        編集する
+      </h3>
+        <%= form_for @blogs, :url => {:action => 'update' }  do |f| %>
+        <%= f.text_area :text, placeholder: 'コメントを入れてください', style: 'width: 100%;height: 100px;' %>
+      <%= button_tag type: "submit", class: "btn btn--block" do %>
+                投稿する
+      <% end %>
+
+    <% end %>
+  </div>

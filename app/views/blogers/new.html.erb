@@ -1,0 +1,28 @@
+<div class="contents row">
+    <h3>
+      投稿する
+    </h3>
+  <%= form_for @blog do |f| %>
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix"></i>
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix"></i>
+            <%= f.text_area :text, placeholder: 'コメントを入れてください', style: 'width: 100%;height: 100px;' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col10 push1">
+      <%= button_tag type: "submit", class: "btn btn--block" do %>
+                投稿する
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+
